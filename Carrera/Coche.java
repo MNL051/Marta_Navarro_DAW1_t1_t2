@@ -22,7 +22,7 @@ public class Coche {
     public void mostrarDatos(){
         //función para imprimir los datos en la consola
 
-        System.out.println("\n nombre: " + nombre);
+        System.out.println("\nnombre: " + nombre);
         System.out.println("marca = " + marca);
         System.out.println("matricula = " + matricula);
         System.out.println("cc = " + cc);
@@ -36,7 +36,7 @@ public class Coche {
         que no sea inferior a 10, a partir del cv del vehículo */
 
         Scanner scanner = new Scanner(System.in); //para ingresar datos con el teclado
-        System.out.print(nombre + " Ingrese la velocidad: " ); //ingresar valor a subir la velocidad
+        System.out.print(nombre + " Ingrese la velocidad a acelerar (debe de ser más de 10): " ); //ingresar valor a subir la velocidad
         int incremento = scanner.nextInt(); //al inngresar el dato (como numero entero) se guarda en la variable incremento
 
         if (incremento < 10) {
@@ -47,27 +47,30 @@ public class Coche {
 
         if (cv < 100){
 
-            incremento = (int)(Math.random()*20)+1; // [0,20], de prueba
+            velocidad += (int)(Math.random()* incremento);
 
         }
         else{
 
-            incremento = 10 + (int)(Math.random()*20)+1; // [10,20], de prueba
+            velocidad += 10 + (int)(Math.random()*incremento);
         }
-        this.velocidad += incremento;
-        this.kmRecorridos += this.velocidad * 0.5; //incremento los km recorridos en un 50% de la velocidad actual
+        velocidad += incremento;
+        kmRecorridos += velocidad * 0.5; //incremento los km recorridos en un 50% de la velocidad actual
 
-
-        System.out.println("Nueva velocidad alcanzada: " + velocidad + " km/h");
-        System.out.println("Kilometros recorridos hasta ahora: " + kmRecorridos + " km \n");
+        System.out.println("Kilometros recorridos hasta ahora: " + kmRecorridos + " km/h \n");
 
     }
 
     int getKmRecorridos(){
         return kmRecorridos;
     }
+
     String getNombre(){
         return nombre;
+    }
+
+    int getMatricula(){
+        return matricula;
     }
 
 }
