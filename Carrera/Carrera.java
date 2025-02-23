@@ -31,16 +31,29 @@ public class Carrera {
             coche1.acelerar();
             coche2.acelerar();
 
-            System.out.println("Kilometros restantes para "+ coche1.getNombre()+ " es de: " + Math.max(kmTotales - coche1.getKmRecorridos(), 0));
-            System.out.println("Kilometros restantes para "+ coche2.getNombre()+ " es de: " + Math.max(kmTotales- coche2.getKmRecorridos(), 0));
+            System.out.println("Kilometros restantes para "+ coche1.getNombre()+ " es de: " + Math.max(kmTotales - coche1.getKmRecorridos(), 0)) /*- coche1.getKmRecorridos()*/;
+            System.out.println("Kilometros restantes para "+ coche2.getNombre()+ " es de: " + Math.max(kmTotales - coche2.getKmRecorridos(), 0)) /*- coche2.getKmRecorridos()*/;
             /* el metodo Math.max devuelve el número con el valor más alto de un par de números
             sout = Math.max(a,b); => sout = Math.max(resta de km faltantes,0)
             Así, si la resta da un valor negativo en la consola saldrá 0*/
 
+            if (coche1.getKmRecorridos()  >= kmTotales && coche2.getKmRecorridos() < kmTotales){
+                System.out.println("\n El ganador es: " + coche1.getMatricula());
+                break;
+            }
+            else if (coche2.getKmRecorridos() >= kmTotales && coche1.getKmRecorridos() < kmTotales){
+                System.out.println("\n El ganador es: " + coche2.getMatricula());
+                break;
+            }
+            else if(coche1.getKmRecorridos()  >= kmTotales && coche2.getKmRecorridos() >= kmTotales){
+                System.out.println("\n Ha sido un empate");
+                break;
+            }
+
         }
         while (coche1.getKmRecorridos() < kmTotales && coche2.getKmRecorridos() < kmTotales){
 
-            System.out.println("\n Vuelta extra " + nVueltas++);
+            System.out.println("\n Vuelta extra");
 
             coche1.acelerar();
             coche2.acelerar();
@@ -53,6 +66,9 @@ public class Carrera {
             }
             else if (coche2.getKmRecorridos() >= kmTotales && coche1.getKmRecorridos() < kmTotales){
                 System.out.println("\n El ganador es: " + coche2.getMatricula());
+            }
+            else if(coche1.getKmRecorridos()  >= kmTotales && coche2.getKmRecorridos() >= kmTotales){
+                System.out.println("\n Ha sido un empate");
             }
 
         }
